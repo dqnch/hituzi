@@ -177,6 +177,11 @@ module Hituzi
         words = split_into_terms(line)
         words_all.concat(words)
         words.each do |term|
+          Rails.logger.debug('<' * 40)
+          Rails.logger.debug(term)
+          Rails.logger.debug(@occur[term])
+          @occur[term] = [] if @occur[term].nil?
+          Rails.logger.debug('>' * 40)
           @occur[term] << num if @occur[term].empty? || num > @occur[term][-1]
         end
       end
