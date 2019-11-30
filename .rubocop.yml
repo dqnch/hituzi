@@ -1,0 +1,41 @@
+inherit_from: .rubocop_todo.yml
+require:
+  - rubocop-performance
+  - rubocop-rails
+  # - rubocop-rspec
+
+Style/Documentation:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Gemspec/OrderedDependencies:
+  Exclude:
+    - 'hituzi.gemspec'
+
+Metrics/LineLength:
+  Max: 120
+
+# ---
+
+Metrics/AbcSize:
+  Max: 47
+
+Metrics/BlockLength:
+  Max: 29
+
+Metrics/ClassLength:
+  Max: 202
+
+Metrics/CyclomaticComplexity:
+  Max: 9
+
+Metrics/MethodLength:
+  Max: 37
+
+Metrics/ModuleLength:
+  Max: 114
+
+Metrics/PerceivedComplexity:
+  Max: 10
