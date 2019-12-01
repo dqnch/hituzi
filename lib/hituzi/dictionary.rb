@@ -40,7 +40,7 @@ module Hituzi
         if progress
           idx2 = read_size / WINDOW_SIZE**2
           if (idx2 % 100_000).zero?
-            Rails.logger.debug("#{self.class}#learn_from_text: #{format("\n%5dk ", idx2 / 1000)}")
+            Rails.logger.debug("#{self.class}#learn_from_text: #{format("\n%<val>5dk ", val: idx2 / 1000)}")
           elsif (idx2 % 20_000).zero?
             Rails.logger.debug("#{self.class}#learn_from_text: *")
           elsif (idx2 % 2_000).zero?
@@ -99,15 +99,15 @@ module Hituzi
         [-@occur[k].size, @rel[k][:num], k.length, k]
       end
       tmp.each do |k|
-        result << format("%s\t\%s\t\%s\t%s\n",
-                         k,
-                         @rel[k][:num],
-                         @rel[k][:sum],
-                         @occur[k].join(','))
+        result << format("%<k>s\t\%<num>s\t\%<sum>s\t%<to_s>s\n",
+                         k: k,
+                         num: @rel[k][:num],
+                         sum: @rel[k][:sum],
+                         to_s: @occur[k].join(','))
+        Rails.logger.debug('<' * 40)
+        Rails.logger.debug(@occur[k].inspect)
+        Rails.logger.debug('>' * 40)
       end
-      Rails.logger.debug('=' * 40)
-      Rails.logger.debug(result.inspect)
-      Rails.logger.debug('=' * 40)
       result
     end
 
@@ -180,11 +180,7 @@ module Hituzi
         words = split_into_terms(line)
         words_all.concat(words)
         words.each do |term|
-          Rails.logger.debug('<' * 40)
-          Rails.logger.debug(term)
-          Rails.logger.debug(@occur[term])
           @occur[term] = [] if @occur[term].nil?
-          Rails.logger.debug('>' * 40)
           @occur[term] << num if @occur[term].empty? || num > @occur[term][-1]
         end
       end

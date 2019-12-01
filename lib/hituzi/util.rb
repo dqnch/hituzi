@@ -128,7 +128,10 @@ module Hituzi
         tmp = result_hash.sort_by { |k, v| [-v, k] }
         Rails.logger.debug("-(候補数: #{result_hash.size})----")
         tmp.first(10).each do |k, v|
-          Rails.logger.debug(format("%5.2f%%: %s\n", v / sum * 100, k))
+          Rails.logger.debug(v.inspect)
+          Rails.logger.debug(sum.inspect)
+          Rails.logger.debug(k.inspect)
+          Rails.logger.debug(format("%<val>5.2f%%: %<key>s\n", val: v / sum * 100, key: k))
         end
       end
       roulette_select(result_hash) || ''

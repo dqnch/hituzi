@@ -9,7 +9,7 @@
 # Offense count: 5
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: annotated, template, unannotated
-Style/FormatStringToken:
-  Exclude:
-    - 'lib/hituzi/dictionary.rb'
-    - 'lib/hituzi/util.rb'
+# Style/FormatStringToken:
+#   Exclude:
+#     - 'lib/hituzi/dictionary.rb'
+#     - 'lib/hituzi/util.rb'
