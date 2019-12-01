@@ -1,6 +1,6 @@
 # Hituzi
 
-Hituzi is a Artificial non-Intelligence.
+Hituzi is a Artificial non-Intelligence based on [Sixamo](https://ashitani.jp/sixamobbs/).
 
 ## Dependencies
 

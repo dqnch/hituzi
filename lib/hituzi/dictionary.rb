@@ -104,9 +104,6 @@ module Hituzi
                          num: @rel[k][:num],
                          sum: @rel[k][:sum],
                          to_s: @occur[k].join(','))
-        Rails.logger.debug('<' * 40)
-        Rails.logger.debug(@occur[k].inspect)
-        Rails.logger.debug('>' * 40)
       end
       result
     end
