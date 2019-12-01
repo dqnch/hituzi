@@ -124,6 +124,7 @@ module Hituzi
       end
 
       if Rails.env.development?
+        Rails.logger.debug(result_hash.inspect)
         sum = result_hash.values.inject(:+).to_f
         tmp = result_hash.sort_by { |k, v| [-v, k] }
         Rails.logger.debug("-(候補数: #{result_hash.size})----")

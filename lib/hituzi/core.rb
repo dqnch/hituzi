@@ -34,7 +34,7 @@ module Hituzi
         tmp = keywords.sort_by { |k, v| [-v, k] }
         Rails.logger.debug('-(term)----')
         tmp.each do |k, v|
-          Rails.logger.debug(' %s(%6.3f%%), ', k, v / sum * 100)
+          Rails.logger.debug(format(' %<key>s(%<val>6.3f%%), ', key: k, val: v / sum * 100))
         end
         Rails.logger.debug('----------')
       end
