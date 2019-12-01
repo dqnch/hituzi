@@ -90,20 +90,20 @@ module Hituzi
     end
 
     def to_s
-      result = ''
-      +result << "line_num: #{@line_num}\n"
-      +result << "\n"
+      result = +''
+      result << "line_num: #{@line_num}\n"
+      result << "\n"
       @occur.delete_if { |_k, v| v.empty? }
       @occur.each { |k, v| @occur[k] = v[-100..-1] if v.size > 100 }
       tmp = @occur.keys.sort_by do |k|
         [-@occur[k].size, @rel[k][:num], k.length, k]
       end
       tmp.each do |k|
-        +result << format("%s\t\%s\t\%s\t%s\n",
-                          k,
-                          @rel[k][:num],
-                          @rel[k][:sum],
-                          @occur[k].join(','))
+        result << format("%s\t\%s\t\%s\t%s\n",
+                         k,
+                         @rel[k][:num],
+                         @rel[k][:sum],
+                         @occur[k].join(','))
       end
       Rails.logger.debug('=' * 40)
       Rails.logger.debug(result.inspect)
