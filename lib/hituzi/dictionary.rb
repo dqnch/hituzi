@@ -229,7 +229,7 @@ module Hituzi
       @trie.delete(str)
       @rel.delete(str)
       tmp = split_into_terms(str)
-      tmp.each { |w| @occur[w] = @occur[w].concat(occur).uniq.sort }
+      tmp.each { |w| @occur[w] = @occur[w].concat(occur).uniq.sort if @occur[w].present? }
       weight_update(tmp) if tmp.size.positive?
     end
   end
